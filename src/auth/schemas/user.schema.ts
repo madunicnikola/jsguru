@@ -1,6 +1,5 @@
 import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import bcrypt from 'bcrypt';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -8,6 +7,9 @@ export type UserDocument = HydratedDocument<User>;
 export class User {
     @Prop({default: false})
     privilegedUser: boolean;
+
+    @Prop()
+    id: string;
 
     @Prop()
     firstName: string;
@@ -21,12 +23,8 @@ export class User {
     @Prop({unique: [true, "\nUnijeli ste e-mail koji već postoji!\n"]})
     email: string;
 
-    @Prop({select: false})
+    @Prop()
     password: string;
-
-    async hashPassword() {
-        this.password = await bcrypt.hash(this.password, 10);
-    }
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

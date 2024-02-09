@@ -7,6 +7,5 @@ export class LoginDto {
 
     @IsNotEmpty()
     @IsString()
-    @MinLength(10)
     readonly password: string;
 }
