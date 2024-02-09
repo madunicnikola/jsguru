@@ -16,4 +16,8 @@ export class ProductDto {
     @IsNotEmpty()
     @IsNumber()
     readonly quantity: number;
+
+    @IsNotEmpty()
+    @IsString()
+    readonly author: string;
 }
