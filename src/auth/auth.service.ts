@@ -40,6 +40,10 @@ export class AuthService{
         }
     }
 
+    async getUserById(userId: string): Promise<User | null> {
+        return this.userModel.findById(userId).exec();
+    }
+
     async login(loginDto: LoginDto): Promise<{token: string}>{
         const {email, password} = loginDto;
 
