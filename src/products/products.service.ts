@@ -42,8 +42,9 @@ export class ProductService{
 
         if(!product.author.equals(userObjectId)){
             throw new UnauthorizedException('You are not authorized to delete products that you did not make!')
+        } else {
+            await this.products.findByIdAndDelete(id);
+            throw new MessageEvent("Deleted Successfuly!");
         }
-        
-        return await this.products.findByIdAndDelete(id);
     };
 };

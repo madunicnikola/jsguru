@@ -25,6 +25,9 @@ export class ProductsController {
     @Delete(':id')
     @UseGuards(AuthGuard())
     deleteProduct(@Param('id') id: string, userId: string){
-        return this.productService.delete(id, userId);
+        const deletedProduct = this.productService.delete(id, userId);
+        if (deletedProduct){
+            throw new MessageEvent("Successfuly deleted!");
+        }
     }
 }
