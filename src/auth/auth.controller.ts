@@ -9,10 +9,10 @@ export class AuthController {
 
     }
     @Post('/register')
-    register(@Body() registerDto: RegisterDto): Promise<{token: string}> {
+    register(@Body() registerDto: RegisterDto) {
         return this.authService.register(registerDto);
     }
-    @Get('/login')
+    @Post('/login')
     login(@Body() loginDto: LoginDto): Promise<{token: string}> {
         return this.authService.login(loginDto);
     }

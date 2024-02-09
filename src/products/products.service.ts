@@ -23,13 +23,13 @@ export class ProductService{
     async findById(id: string) {
         const validId = mongoose.isValidObjectId(id);
         if (!validId) {
-          throw new NotFoundException('\nProduct not found!\n');
+          throw new NotFoundException('Product not found!');
         }
 
         const product = await this.products.findById(id);
 
         if (!product) {
-            throw new NotFoundException('\nProduct does not exist!\n');
+            throw new NotFoundException('Product does not exist!');
         }
 
         return product

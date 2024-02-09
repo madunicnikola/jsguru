@@ -5,9 +5,6 @@ export type UserDocument = HydratedDocument<User>;
 
 @Schema({timestamps: true})
 export class User {
-    @Prop({default: false})
-    privilegedUser: boolean;
-
     @Prop()
     id: string;
 
@@ -20,7 +17,7 @@ export class User {
     @Prop()
     phoneNumber: string;
 
-    @Prop({unique: [true, "\nUnijeli ste e-mail koji već postoji!\n"]})
+    @Prop({unique: [true, "Unijeli ste e-mail koji već postoji!"]})
     email: string;
 
     @Prop()
