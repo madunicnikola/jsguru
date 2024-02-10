@@ -1,10 +1,8 @@
 import { SchemaFactory, Prop, Schema } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
-
-export type UserDocument = HydratedDocument<User>;
+import { Document } from 'mongoose';
 
 @Schema({timestamps: true})
-export class User {
+export class User extends Document{
     @Prop()
     id: string;
 
@@ -17,7 +15,7 @@ export class User {
     @Prop()
     phoneNumber: string;
 
-    @Prop({unique: [true, "Unijeli ste e-mail koji već postoji!"]})
+    @Prop({unique: [true, "E-mail already exists!"]})
     email: string;
 
     @Prop()

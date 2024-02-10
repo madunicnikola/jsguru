@@ -1,5 +1,6 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsEmpty, IsNotEmpty, IsNumber, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
+import { User } from "src/auth/schemas/user.schema";
 
 export class ProductDto {
     @IsNotEmpty()
@@ -21,4 +22,7 @@ export class ProductDto {
     @IsNumber()
     @ApiProperty({type: Number, description: 'quantity'})
     readonly quantity: number;
+
+    @IsEmpty({message: "Forbidden command!"})
+    readonly user: User;
 }

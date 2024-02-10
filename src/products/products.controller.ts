@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
 import { ProductService } from './products.service';
 import { ProductDto } from 'src/products/dto/product.dto';
 import { Product } from './schemas/product.schema';
@@ -13,8 +13,8 @@ export class ProductsController {
     @UseGuards(AuthGuard())
     @ApiCreatedResponse({description: "Create your product!"})
     @ApiBearerAuth()
-    async createProduct(@Body() product: ProductDto): Promise<Product> {
-        return this.productService.create(product);
+    async createProduct(@Body() product: ProductDto, @Req() req): Promise<Product> {
+        return this.productService.create(product, req.user);
     }
     @Get()
     @UseGuards(AuthGuard())
@@ -34,7 +34,7 @@ export class ProductsController {
     @UseGuards(AuthGuard())
     @ApiCreatedResponse({description: "Delete your product!"})
     @ApiBearerAuth()
-    async deleteProduct(@Param('id') id: string){
-        return this.productService.delete(id);
+    async deleteProduct( @Param('id') id: string, @Req() req): Promise<Product>{
+        return this.productService.delete(id, req.user);
     }
 }

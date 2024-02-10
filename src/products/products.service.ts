@@ -1,8 +1,9 @@
-import { Injectable, NotFoundException, Req, UnauthorizedException } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable, NotFoundException, Req, UnauthorizedException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { ProductDto } from "src/products/dto/product.dto";
 import { Product } from "./schemas/product.schema";
 import mongoose from "mongoose";
+import { User } from "src/auth/schemas/user.schema";
 
 @Injectable()
 export class ProductService{
@@ -10,8 +11,8 @@ export class ProductService{
         @InjectModel(Product.name)
         private products: mongoose.Model<Product>,
     ) {}
-    async create(productDto: ProductDto, ): Promise<Product> {
-        const product = await this.products.create(productDto);
+    async create(productDto: ProductDto, user: User): Promise<Product> {
+        const product = await this.products.create({...productDto, user: user._id});
         return product;
     }
     async findAll(): Promise<Product[]>{
@@ -32,8 +33,27 @@ export class ProductService{
 
         return product
     }
-    async delete(id: string): Promise<Product>{      
-        const deletedPosts = await this.products.findByIdAndDelete(id);
-        return deletedPosts;
-    };
+    async delete(id: string, userId: string | {_id: string}): Promise<Product> {  
+        try {
+            const product = await this.findById(id);
+    
+            const userIdString = typeof userId === 'string' ? userId : userId._id.toString();
+
+            if (product.user.toString() !== userIdString) {
+                throw new HttpException('You are not authorized to delete this product!', HttpStatus.UNAUTHORIZED);
+            }
+    
+            const deletedProduct = await this.products.findByIdAndDelete(id);
+            console.log('Deleted product:', deletedProduct);
+    
+            if (!deletedProduct) {
+                throw new NotFoundException('Product not found!');
+            }
+    
+            return deletedProduct;
+        } catch (error) {
+            console.error('Error deleting product:', error);
+            throw error;
+        }
+    }
 };

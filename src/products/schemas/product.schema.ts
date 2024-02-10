@@ -1,8 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import mongoose, { HydratedDocument } from "mongoose";
+import mongoose from "mongoose";
 import { User } from "src/auth/schemas/user.schema";
-
-export type ProductDocument = HydratedDocument<Product>;
 
 @Schema({timestamps: true})
 export class Product {
@@ -21,5 +19,7 @@ export class Product {
     @Prop()
     quantity: number;
 
+    @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'User'})
+    user: User;
 }
 export const ProductSchema = SchemaFactory.createForClass(Product);
