@@ -1,14 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../src/app.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [MongooseModule.forRoot(process.env.MONGO_URI, {
+        directConnection: true,
+      }), AppModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
@@ -19,6 +23,8 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
-      .expect('Test!');
+      .expect('API is up and running!');
   });
+
+  afterAll(() => mongoose.connection.close())
 });
