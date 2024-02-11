@@ -3,12 +3,12 @@
 # Mongo server instance
 $ mongod
 
-# cluster connection & creation
+# Cluster connection & creation
 $ mongo
 $ rs.initiate()
 $ rs.add("cluster.example:PORT")
 
-#cluster status verification
+# Cluster status verification
 $ mongo
 $ rs.status()
 ```
