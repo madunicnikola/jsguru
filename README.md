@@ -1,4 +1,4 @@
-## Create and Conect your MongoDB Cluster
+## Create and Connect your MongoDB Cluster
 ```bash
 # Mongo server instance
 $ mongod
