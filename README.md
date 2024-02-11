@@ -58,7 +58,7 @@ $ npm run test:cov
 http://localhost:3000/api/
 ```
 
-# Live previews in Postman
+# API testing in Postman
 
 ## User registration
 ![image](https://github.com/madunicnikola/jsguru/assets/104438853/4113cd74-894e-42ad-87f4-bb6ac05c53cb)
