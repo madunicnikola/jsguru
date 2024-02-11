@@ -1,3 +1,18 @@
+## Create and Conect your MongoDB Cluster
+```bash
+# Mongo server instance
+$ mongod
+
+# cluster connection & creation
+$ mongo
+$ rs.initiate()
+$ rs.add("cluster.example:PORT")
+
+#cluster status verification
+$ mongo
+$ rs.status()
+```
+
 ## Installation
 
 ```bash
