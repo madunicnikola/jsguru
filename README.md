@@ -1,7 +1,7 @@
-# DOCUMENTATION FOR THE JSGURU API
+# DOCUMENTATION & GUIDE FOR THE JSGURU API
 Created by Nikola Madunić, licensed by MIT
 
-## Create and Connect your MongoDB Cluster
+## (OPTIONAL) Create and Connect your MongoDB Cluster
 ```bash
 # Mongo server instance
 $ mongod
@@ -22,13 +22,20 @@ $ git clone https://github.com/madunicnikola/jsguru.git
 ```
 
 ## Installation
-
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Add your dotenv file (!VERY IMPORTANT!)
+```bash
+$ npm install dotenv
+```
+- Inside your .env file add:
+```MONGO_URI="mongodb://localhost/nestjs"```
+```JTW_SECRET```
+```JWT_EXPIRE=3d```
 
+## Running the app
 ```bash
 # development
 $ npm run start
@@ -41,7 +48,6 @@ $ npm run start:prod
 ```
 
 ## Test
-
 ```bash
 # unit tests
 $ npm run test
