@@ -1,3 +1,6 @@
+# DOCUMENTATION FOR THE JSGURU API
+Created by Nikola Madunić, licensed by MIT
+
 ## Create and Connect your MongoDB Cluster
 ```bash
 # Mongo server instance
@@ -50,6 +53,11 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## View documentation in Swagger
+```
+http://localhost:3000/api/
+```
+
 # Live previews in Postman
 
 ## User register
@@ -68,5 +76,6 @@ $ npm run test:cov
 ![image](https://github.com/madunicnikola/jsguru/assets/104438853/f1a5d72c-b04f-4069-ad55-d0c990b5e97a)
 
 ## Authorized DELETE product by ID
+- After deleting a product by ID attempt to GET it for this message to display
 ![image](https://github.com/madunicnikola/jsguru/assets/104438853/54dd7434-7488-4609-b7b9-706eef172e40)
 
