@@ -13,6 +13,11 @@ $ mongo
 $ rs.status()
 ```
 
+## Clone this repository
+```bash
+$ git clone https://github.com/madunicnikola/jsguru.git
+```
+
 ## Installation
 
 ```bash
@@ -44,3 +49,24 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Live previews in Postman
+
+# User register
+![image](https://github.com/madunicnikola/jsguru/assets/104438853/4113cd74-894e-42ad-87f4-bb6ac05c53cb)
+
+# User login with jwt token
+![image](https://github.com/madunicnikola/jsguru/assets/104438853/5724e677-4797-41cc-8753-c05ee78d3449)
+
+# Unauthorized access GET products without token
+![image](https://github.com/madunicnikola/jsguru/assets/104438853/2f3cf8c6-c09a-4135-a2fb-63ba14c6abb5)
+
+# Authorized POST access to products
+![image](https://github.com/madunicnikola/jsguru/assets/104438853/74cfee0c-f273-4e28-a681-f767ec70e239)
+
+# Authorized GET product by ID 
+![image](https://github.com/madunicnikola/jsguru/assets/104438853/f1a5d72c-b04f-4069-ad55-d0c990b5e97a)
+
+# Authorized DELETE product by ID
+![image](https://github.com/madunicnikola/jsguru/assets/104438853/54dd7434-7488-4609-b7b9-706eef172e40)
+
