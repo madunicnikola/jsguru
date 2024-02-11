@@ -1,5 +1,5 @@
 # DOCUMENTATION & GUIDE FOR THE JSGURU API
-Created by Nikola Madunić, licensed by MIT
+© Copyrighted by Nikola Madunić, licensed by MIT
 
 ## (OPTIONAL) Create and Connect your MongoDB Cluster
 ```bash
